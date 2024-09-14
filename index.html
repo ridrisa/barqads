@@ -563,9 +563,13 @@
                         <label for="logo-x-position">Logo Position X</label>
                         <input type="range" id="logo-x-position" min="0" max="100">
                     </div>
-                    <div class="option">
+                     <div class="option">
                         <label for="logo-y-position">Logo Position Y</label>
                         <input type="range" id="logo-y-position" min="0" max="100">
+                    </div>
+                    <div class="option">
+                        <label for="logo-size">Logo Size</label>
+                        <input type="range" id="logo-size" min="50" max="300" value="100">
                     </div>
                 </div>
             </div>
@@ -842,6 +846,27 @@
             logoContainer.style.left = `${logoXPosition.value}%`;
             logoContainer.style.top = `${logoYPosition.value}%`;
         }
+
+        const logoSize = document.getElementById('logo-size');
+
+logoSize.addEventListener('input', updateLogoSize);
+
+function updateLogoSize() {
+    const size = `${logoSize.value}px`;
+    
+    // Check if the logo is text or image
+    if (logoTypeSelect.value === 'text') {
+        logoContainer.style.fontSize = size;
+    } else {
+        // If the logo is an image, adjust the size
+        const logoImg = logoContainer.querySelector('img');
+        if (logoImg) {
+            logoImg.style.width = size;
+            logoImg.style.height = 'auto'; // Maintain aspect ratio
+        }
+    }
+}
+
 
     </script>
 </body>
