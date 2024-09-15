@@ -20,7 +20,6 @@
             padding: 0;
             height: 100%;
             font-family: 'Muli', sans-serif;
-            background: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
         }
@@ -212,6 +211,40 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+        .cities-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.cities-container h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.cities-list {
+    list-style: none;
+    padding: 0;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.cities-list li {
+    display: inline-block;
+    margin: 0 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+.cities-list li::before {
+    content: "\f3c5"; /* Font Awesome map marker icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--accent-color);
+    margin-right: 10px;
+}
+
 
         .guaranteed-impressions {
             position: absolute;
@@ -271,15 +304,22 @@
         }
 
         .bike {
-            position: absolute;
-            right: -150px;
-            animation: moveBike 2s linear;
-        }
+    position: absolute;
+    right: -150px; /* Start off-screen on the right */
+    animation: moveBike 3s ease-in-out infinite, bobbing 1s ease-in-out infinite; /* Added bobbing effect */
+    filter: blur(1px) brightness(1.2); /* Adds motion blur and brightness for speed effect */
+}
 
-        @keyframes moveBike {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-100vw - 150px)); }
-        }
+@keyframes moveBike {
+    0% { transform: translateX(100vw) scale(1); }
+    50% { transform: translateX(0) scale(1.1); } /* Zooms in slightly at the center */
+    100% { transform: translateX(-150px) scale(1); }
+}
+
+@keyframes bobbing {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); } /* Adds a slight bobbing motion */
+}
 
         .car {
             position: absolute;
@@ -328,13 +368,23 @@
         <p class="description">A Revolutionary Way to Deliver Outdoor Ads.<br> 
             BarqAds is launching a new product that combines real-time data, geo-targeting, re-targeting and stunning visuals for unparalleled brand exposure.</p>
 
-        <ul class="features-list">
-            <li>Guaranteed reach through precise geofencing</li>
-            <li>Dynamic content updates to keep your ads relevant</li>
-            <li>Eye-catching designs for high visibility</li>
-            <li>Easy setup with expert support</li>
-            <li>Comprehensive analytics for measurable results</li>
-        </ul>
+            <ul class="features-list">
+                <li>Guaranteed reach through precise geofencing</li>
+                <li>Dynamic content updates to keep your ads relevant</li>
+                <li>Eye-catching designs for high visibility</li>
+                <li>Easy setup with expert support</li>
+                <li>Comprehensive analytics for measurable results</li>
+            </ul>
+    
+            <div class="cities-container">
+                <h2>We’re launching soon in:</h2>
+                <ul class="cities-list">
+                    <li>Riyadh</li>
+                    <li>Jeddah</li>
+                    <li>Dammam</li>
+                </ul>
+            </div>
+    
 
         <a href="#notify" class="cta-button">Be the First to Know!</a>
 
