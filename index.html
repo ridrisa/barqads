@@ -347,6 +347,27 @@
             }
         }
 
+        .shocking-fact {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0; /* Removed margin */
+    max-width: 400px; /* Adjusted width */
+    position: absolute;
+    top: 50%; /* Vertically centered */
+    left: 150px; /* Positioned to the side */
+    transform: rotate(-15deg) translateY(-50%); /* Diagonal rotation and vertical center */
+    transform-origin: center;
+    box-shadow: 0 0 20px var(--accent-color);
+    z-index: 1; /* Ensures it stays above other content */
+    display: inline-block;
+}
+
+
+
         @media (max-width: 480px) {
             h1 { font-size: 1.8rem; }
             .description { font-size: 1rem; }
@@ -368,12 +389,18 @@
         <p class="description">A Revolutionary Way to Deliver Outdoor Ads.<br> 
             BarqAds is launching a new product that combines real-time data, geo-targeting, re-targeting and stunning visuals for unparalleled brand exposure.</p>
 
+
+            <div class="shocking-fact">
+                😲 Did you know? The average person is exposed to over 4,000 ads per day! 📣
+                BarqAds cuts through the noise with dynamic, data-driven outdoor advertising that grabs the attention. 🎯 
+            </div>
+
             <ul class="features-list">
-                <li>Achieve guaranteed reach through precise geofencing</li>
-                <li>Update content dynamically to keep your ads relevant</li>
-                <li>Design eye-catching visuals for high visibility</li>
-                <li>Set up easily with expert support</li>
-                <li>Analyze comprehensively for measurable results</li>
+                <li>Guaranteed reach through precise geofencing</li>
+                <li>Dynamic content updates to keep your ads relevant</li>
+                <li>Eye-catching designs for high visibility</li>
+                <li>Easy setup with expert support</li>
+                <li>Comprehensive analytics for measurable results</li>
             </ul>
     
             <div class="cities-container">
