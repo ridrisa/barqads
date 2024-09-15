@@ -251,7 +251,6 @@
             top: 50px;
             right: 50px;
             background-color: var(--primary-color);
-            color: var(--bg-color);
             padding: 10px;
             border-radius: 50%;
             font-weight: bold;
@@ -429,11 +428,40 @@
 
         <div class="subscribe-box" id="notify">
             <h3>Sign Up for Updates</h3>
-            <form action="#" id="subscribe-form">
-                <input type="email" placeholder="Your email address" required>
+            <form action="https://script.google.com/macros/s/AKfycbx6uEtd4h965smY5jYbQn45jLtr2q-1-T2UQbHnr-NBeagF2RsNB-wdYZdigBJzHlfZ/exec" method="POST" id="subscribe-form">
+                <input type="email" name="email" placeholder="Your email address" required>
                 <input type="submit" value="Subscribe">
             </form>
+            <p id="subscribe-success" style="display: none; color: green;">Thank you for subscribing!</p>
         </div>
+        
+        <script>
+            document.getElementById('subscribe-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const form = e.target;
+                const email = form.querySelector('input[name="email"]').value;
+                
+                // Send the email to Google Apps Script
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => response.text())
+                .then(result => {
+                    // Show success message
+                    document.getElementById('subscribe-success').style.display = 'block';
+                    form.reset();  // Clear the form
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        </script>
+        
+        
+        
+        
     </div>
 
     <div class="moving-cars" id="movingCars"></div>
