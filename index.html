@@ -429,10 +429,11 @@
         <div class="subscribe-box" id="notify">
             <h3>Sign Up for Updates</h3>
             <form action="https://script.google.com/macros/s/AKfycbx6uEtd4h965smY5jYbQn45jLtr2q-1-T2UQbHnr-NBeagF2RsNB-wdYZdigBJzHlfZ/exec" method="POST" id="subscribe-form">
-                <input type="email" name="email" placeholder="Your email address" required>
-                <input type="submit" value="Subscribe">
+                <input type="email" name="email" id="email" placeholder="Your email address" required>
+                <input type="submit" value="Subscribe" id="submit-button">
             </form>
-            <p id="subscribe-success" style="display: none; color: green;">Thank you for subscribing!</p>
+            <p id="subscribe-success" style="display: none; color: var(--primary-color); font-size: 1.2rem; margin-top: 1rem;">Thank you for subscribing!</p>
+            <p id="subscribe-error" style="display: none; color: red; font-size: 1.2rem; margin-top: 1rem;">Oops! Something went wrong. Please try again.</p>
         </div>
         
         <script>
@@ -440,8 +441,19 @@
                 e.preventDefault();
                 
                 const form = e.target;
-                const email = form.querySelector('input[name="email"]').value;
+                const emailInput = form.querySelector('input[name="email"]');
+                const submitButton = document.getElementById('submit-button');
+                const successMessage = document.getElementById('subscribe-success');
+                const errorMessage = document.getElementById('subscribe-error');
                 
+                // Hide any previous messages
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+                
+                // Disable the button and change text to "Subscribing..."
+                submitButton.disabled = true;
+                submitButton.value = 'Subscribing...';
+        
                 // Send the email to Google Apps Script
                 fetch(form.action, {
                     method: 'POST',
@@ -449,11 +461,17 @@
                 })
                 .then(response => response.text())
                 .then(result => {
-                    // Show success message
-                    document.getElementById('subscribe-success').style.display = 'block';
+                    // Show the success message and reset the form
+                    successMessage.style.display = 'block';
+                    submitButton.disabled = false;
+                    submitButton.value = 'Subscribe';
                     form.reset();  // Clear the form
                 })
                 .catch(error => {
+                    // Show an error message
+                    errorMessage.style.display = 'block';
+                    submitButton.disabled = false;
+                    submitButton.value = 'Subscribe';
                     console.error('Error:', error);
                 });
             });
