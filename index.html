@@ -381,34 +381,34 @@
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
-                particle.style.width = `${Math.random() * 5 + 2}px`;
+                particle.style.width = ${Math.random() * 5 + 2}px;
                 particle.style.height = particle.style.width;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 2 + 2}s`;
-                particle.style.animationDelay = `${Math.random() * 2}s`;
+                particle.style.left = ${Math.random() * 100}%;
+                particle.style.top = ${Math.random() * 100}%;
+                particle.style.animationDuration = ${Math.random() * 2 + 2}s;
+                particle.style.animationDelay = ${Math.random() * 2}s;
                 particlesContainer.appendChild(particle);
             }
         }
 
         function createCars() {
             const carsContainer = document.getElementById('movingCars');
-            const carImages = ['car1.avif', 'car2.avif', 'car3.avif'];
+            const carImages = ['car1.avif', 'car2.avif', 'bike.avif'];
 
             carImages.forEach((carImage, index) => {
                 const car = document.createElement('div');
                 car.classList.add('car');
                 const img = document.createElement('img');
-                img.src = `images/${carImage}`;
-                img.alt = `Moving Car ${index + 1}`;
+                img.src = images/${carImage};
+                img.alt = Moving Car ${index + 1};
                 car.appendChild(img);
 
                 const randomTop = Math.random() * 80 + 10; // Random vertical position between 10% and 90%
-                car.style.top = `${randomTop}%`;
+                car.style.top = ${randomTop}%;
                 
                 // Set a random start delay for each car
                 const randomDelay = Math.random() * 5;
-                car.style.animationDelay = `${randomDelay}s`;
+                car.style.animationDelay = ${randomDelay}s;
 
                 carsContainer.appendChild(car);
             });
