@@ -219,7 +219,7 @@
             right: 50px;
             background-color: var(--primary-color);
             color: var(--bg-color);
-            padding: 20px;
+            padding: 10px;
             border-radius: 50%;
             font-weight: bold;
             font-size: 1rem;
@@ -235,12 +235,28 @@
             border: 4px solid var(--accent-color);
             text-transform: uppercase;
             line-height: 1.2;
-            animation: stampPulse 2s infinite alternate;
+            font-family: 'Courier New', monospace;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            background-image: radial-gradient(circle, var(--primary-color) 60%, var(--accent-color) 100%);
+            opacity: 0;
+            transform: scale(5) rotate(-15deg);
+            transition: all 0.5s ease-out;
         }
 
-        @keyframes stampPulse {
-            0% { transform: rotate(-15deg) scale(1); }
-            100% { transform: rotate(-15deg) scale(1.05); }
+        .guaranteed-impressions.stamped {
+            opacity: 1;
+            transform: scale(1) rotate(-15deg);
+        }
+
+        .stamp-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9;
+            display: none;
         }
 
         .moving-cars {
@@ -254,10 +270,21 @@
             pointer-events: none;
         }
 
+        .bike {
+            position: absolute;
+            right: -150px;
+            animation: moveBike 2s linear;
+        }
+
+        @keyframes moveBike {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100vw - 150px)); }
+        }
+
         .car {
             position: absolute;
-            right: -150px; /* Start off-screen on the right */
-            animation: moveCar 8s linear 2; /* 8s duration, repeat twice */
+            right: -150px;
+            animation: moveCar 8s linear;
         }
 
         .car img {
@@ -292,20 +319,14 @@
     </style>
 </head>
 <body>
-    <!-- Background image -->
     <div class="background"></div>
-
-    <!-- Particle effect container -->
     <div class="particles" id="particles"></div>
-
-    <!-- Guaranteed Impressions banner -->
+    <div class="stamp-overlay"></div>
     <div class="guaranteed-impressions">Guaranteed Impressions</div>
-
-    <!-- Main content wrapper -->
     <div class="content-wrapper">
         <h1>Coming Soon</h1>
         <p class="description">A Revolutionary Way to Deliver Outdoor Ads.<br> 
-            BarqAds is launching a new product that combines real-time data, geo-targeting, and stunning visuals for unparalleled brand exposure.</p>
+            BarqAds is launching a new product that combines real-time data, geo-targeting, re-targeting and stunning visuals for unparalleled brand exposure.</p>
 
         <ul class="features-list">
             <li>Guaranteed reach through precise geofencing</li>
@@ -345,12 +366,10 @@
         </div>
     </div>
 
-    <!-- Container for moving cars -->
     <div class="moving-cars" id="movingCars"></div>
 
     <script>
-        // Set the countdown date to September 17th at 1:00 PM Saudi time
-        const countDownDate = new Date("2024-09-17T13:00:00+03:00").getTime();
+        const countDownDate = new Date("2024-09-22T13:00:00+03:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -381,75 +400,76 @@
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
-                particle.style.width = ${Math.random() * 5 + 2}px;
+                particle.style.width = `${Math.random() * 5 + 2}px`;
                 particle.style.height = particle.style.width;
-                particle.style.left = ${Math.random() * 100}%;
-                particle.style.top = ${Math.random() * 100}%;
-                particle.style.animationDuration = ${Math.random() * 2 + 2}s;
-                particle.style.animationDelay = ${Math.random() * 2}s;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                particle.style.animationDelay = `${Math.random() * 2}s`;
                 particlesContainer.appendChild(particle);
             }
         }
 
+      
+
         function createCars() {
             const carsContainer = document.getElementById('movingCars');
-            const carImages = ['car1.avif', 'car2.avif', 'bike.avif'];
+            const carImages = ['picture1.png','picture2.png','picture3.png', 'bike.avif'];
 
             carImages.forEach((carImage, index) => {
                 const car = document.createElement('div');
                 car.classList.add('car');
+                if (carImage.includes('bike')) {
+                    car.classList.add('bike');
+                }
                 const img = document.createElement('img');
-                img.src = images/${carImage};
-                img.alt = Moving Car ${index + 1};
+                img.src = `images/${carImage}`;
+                img.alt = `Moving ${carImage.includes('bike') ? 'Bike' : 'Car'} ${index + 1}`;
                 car.appendChild(img);
 
                 const randomTop = Math.random() * 80 + 10; // Random vertical position between 10% and 90%
-                car.style.top = ${randomTop}%;
+                car.style.top = `${randomTop}%`;
                 
-                // Set a random start delay for each car
-                const randomDelay = Math.random() * 5;
-                car.style.animationDelay = ${randomDelay}s;
+                // Set a random start delay for each car/bike
+                const randomDelay = Math.random() * 3;
+                car.style.animationDelay = `${randomDelay}s`;
+
+                // Set a faster animation duration for the bike
+                if (carImage.includes('bike')) {
+                    car.style.animationDuration = '2s'; // Faster animation for the bike
+                }
 
                 carsContainer.appendChild(car);
             });
         }
 
-        // Initialize particles and cars
-        createParticles();
-        createCars();
+        function animateStamp() {
+            const stamp = document.querySelector('.guaranteed-impressions');
+            const overlay = document.querySelector('.stamp-overlay');
+            
+            overlay.style.display = 'block';
+            
+            setTimeout(() => {
+                stamp.classList.add('stamped');
+                
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 500);
+            }, 500);
+        }
 
-        // Create new cars every 15 seconds
-        setInterval(createCars, 15000);
+        function initializePageElements() {
+            createParticles();
+            createCars();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            setInterval(createCars, 10000); // Create new cars every 10 seconds
+            
+            // Animate the stamp after a short delay
+            setTimeout(animateStamp, 1000);
+        }
 
-       // Handle form submission
-    document.getElementById('subscribe-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const emailInput = this.querySelector('input[type="email"]');
-        const email = emailInput.value;
-        
-        // Here you would typically send the email to your server
-        // For this example, we'll just log it to the console and show an alert
-        console.log('Subscription email:', email);
-        
-        alert('Thank you for subscribing! We will keep you updated on our launch.');
-        this.reset(); // Clear the form
-    });
-
-    // Function to start all animations and timers
-    function initializePageElements() {
-        createParticles();
-        createCars();
-        updateCountdown();
-
-        // Start the countdown timer
-        setInterval(updateCountdown, 1000);
-
-        // Create new cars every 15 seconds
-        setInterval(createCars, 15000);
-    }
-
-    // Call the initialization function when the page loads
-    window.addEventListener('load', initializePageElements);
-</script>
+        window.addEventListener('load', initializePageElements);
+    </script>
 </body>
 </html>
