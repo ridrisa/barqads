@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BARQ ADS - Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Coming Soon: A Revolutionary Way to Deliver Outdoor Ads - BarqAds</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         :root {
             --primary-color: #FFB81C;
-            --bg-color: #1a1a2e;
+            --bg-color: #54565A;
             --accent-color: #9F2842;
+            --secondary-color: #00A8E8;
             --text-color: #FFFFFF;
         }
         
@@ -17,10 +19,10 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Muli', sans-serif;
             background: var(--bg-color);
-            overflow: hidden;
             color: var(--text-color);
+            overflow-x: hidden;
         }
 
         .background {
@@ -29,342 +31,326 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('images/lowercover.jpg') no-repeat center center fixed;
+            background: url('images/barq-background.jpg') no-repeat center center fixed;
             background-size: cover;
-            filter: brightness(0.3);
+            filter: brightness(0.4);
             z-index: -2;
-            animation: backgroundPulse 10s infinite alternate;
-        }
-
-        .lightning {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            opacity: 0;
-            z-index: -1;
-            pointer-events: none;
         }
 
         .content-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
-            padding: 1rem;
-            box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .coming-soon-cover {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 26, 46, 0.9);
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            z-index: 1000;
+            min-height: 100vh;
+            padding: 2rem;
+            text-align: center;
+            z-index: 2;
         }
 
-        .coming-soon-text {
-            font-size: 5rem;
+        h1 {
+            font-size: 3.5rem;
             font-weight: 700;
             color: var(--primary-color);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .description {
+            font-size: 1.5rem;
+            color: var(--text-color);
             margin-bottom: 2rem;
-            animation: glow 2s ease-in-out infinite alternate;
+            max-width: 700px;
+        }
+
+        .features-list {
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 700px;
+            text-align: left;
+        }
+
+        .features-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "\f00c";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            padding: 15px 35px;
+            font-size: 1.5rem;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--primary-color);
         }
 
         .countdown-container {
             text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            max-width: 600px;
-            width: 100%;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
-        }
-
-        .slogan {
-            color: var(--text-color);
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
+            margin-top: 2rem;
         }
 
         .time-block {
-            margin: 0 1rem;
+            display: inline-block;
+            margin: 0 10px;
             text-align: center;
-            position: relative;
         }
 
         .time {
-            font-size: 3.2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
             color: var(--primary-color);
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
             min-width: 80px;
-            box-shadow: 0 0 20px rgba(255,184,28,0.5);
-            animation: timePulse 2s infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .label {
             font-size: 1rem;
             color: var(--text-color);
             text-transform: uppercase;
-            margin-top: 0.5rem;
-            font-weight: 300;
+            margin-top: 5px;
         }
 
-        .cta-button {
-            padding: 15px 30px;
-            font-size: 1.4rem;
+        .subscribe-box {
+            margin-top: 3rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 184, 28, 0.2);
+        }
+
+        .subscribe-box input[type="email"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            margin-right: 10px;
+            outline: none;
+        }
+
+        .subscribe-box input[type="submit"] {
+            padding: 10px 25px;
+            font-size: 1.2rem;
             background-color: var(--primary-color);
             color: var(--bg-color);
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 700;
-            letter-spacing: 1px;
         }
 
-        .cta-button:hover {
+        .subscribe-box input[type="submit"]:hover {
             background-color: var(--accent-color);
             color: var(--text-color);
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--primary-color);
         }
 
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 150px;
-            z-index: 1001;
-        }
-
-        .moving-car {
+        .particles {
             position: fixed;
-            bottom: 50px;
-            right: -300px;
-            width: 300px;
-            z-index: 1002;
-            animation: moveCar 15s linear infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         .guaranteed-impressions {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            padding: 20px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 0 20px var(--primary-color);
+            transform: rotate(-15deg);
+            z-index: 10;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 4px solid var(--accent-color);
+            text-transform: uppercase;
+            line-height: 1.2;
+            animation: stampPulse 2s infinite alternate;
+        }
+
+        @keyframes stampPulse {
+            0% { transform: rotate(-15deg) scale(1); }
+            100% { transform: rotate(-15deg) scale(1.05); }
+        }
+
+        .moving-cars {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            z-index: 1003;
-            animation: fadeInOut 4s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .car {
+            position: absolute;
+            right: -150px; /* Start off-screen on the right */
+            animation: moveCar 8s linear 2; /* 8s duration, repeat twice */
+        }
+
+        .car img {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 0 10px var(--primary-color));
         }
 
         @keyframes moveCar {
-            0% {
-                right: -300px;
-            }
-            100% {
-                right: calc(100% + 300px);
-            }
-        }
-
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px #ffffff, 0 0 20px var(--primary-color); }
-            100% { text-shadow: 0 0 30px var(--primary-color), 0 0 50px var(--accent-color); }
-        }
-
-        @keyframes timePulse {
-            0% { box-shadow: 0 0 20px rgba(255,184,28,0.5); }
-            100% { box-shadow: 0 0 40px rgba(255,184,28,0.8); }
-        }
-
-        @keyframes backgroundPulse {
-            0% { filter: brightness(0.3) hue-rotate(0deg); }
-            100% { filter: brightness(0.4) hue-rotate(45deg); }
-        }
-
-        @keyframes lightning {
-            0% { opacity: 0; }
-            10% { opacity: 0.3; }
-            11% { opacity: 0; }
-            14% { opacity: 0.3; }
-            15% { opacity: 0; }
-            100% { opacity: 0; }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100vw - 150px)); }
         }
 
         @media (max-width: 768px) {
-            .coming-soon-text {
-                font-size: 3.5rem;
-            }
-
-            h1 {
-                font-size: 2.8rem;
-            }
-
-            .slogan {
-                font-size: 1.5rem;
-            }
-
-            .time {
-                font-size: 2.8rem;
-                min-width: 70px;
-                padding: 0.75rem;
-            }
-
+            h1 { font-size: 2.5rem; }
+            .description { font-size: 1.2rem; }
             .cta-button {
-                padding: 12px 24px;
                 font-size: 1.2rem;
-            }
-
-            .logo {
-                width: 120px;
-            }
-
-            .moving-car {
-                width: 200px;
-            }
-
-            .guaranteed-impressions {
-                font-size: 1.2rem;
+                padding: 12px 28px;
             }
         }
 
         @media (max-width: 480px) {
-            .coming-soon-text {
-                font-size: 2.5rem;
-            }
-
-            .countdown-container {
-                padding: 1.5rem;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .slogan {
-                font-size: 1.2rem;
-            }
-
-            .countdown {
-                flex-wrap: wrap;
-            }
-
-            .time-block {
-                flex-basis: 50%;
-                margin-bottom: 1rem;
-            }
-
-            .time {
-                font-size: 2.2rem;
-                min-width: 60px;
-                padding: 0.5rem;
-            }
-
+            h1 { font-size: 1.8rem; }
+            .description { font-size: 1rem; }
             .cta-button {
                 font-size: 1rem;
-                padding: 10px 20px;
+                padding: 10px 25px;
             }
-
-            .moving-car {
-                width: 150px;
-            }
-
-            .guaranteed-impressions {
-                font-size: 1rem;
-            }
+            .subscribe-box input[type="email"] { width: 220px; }
         }
     </style>
 </head>
 <body>
+    <!-- Background image -->
     <div class="background"></div>
-    <div class="lightning"></div>
 
-    <!-- Logo -->
-    <img src="images/logotransparentxs.png" alt="BarqAds Logo" class="logo">
+    <!-- Particle effect container -->
+    <div class="particles" id="particles"></div>
 
-    <!-- Moving Car -->
-    <img src="images/car1.avif" alt="Moving Car" class="moving-car">
-
-    <!-- Guaranteed Impressions Text -->
+    <!-- Guaranteed Impressions banner -->
     <div class="guaranteed-impressions">Guaranteed Impressions</div>
 
-    <div class="coming-soon-cover">
-        <div class="coming-soon-text">COMING SOON</div>
+    <!-- Main content wrapper -->
+    <div class="content-wrapper">
+        <h1>Coming Soon</h1>
+        <p class="description">A Revolutionary Way to Deliver Outdoor Ads.<br> 
+            BarqAds is launching a new product that combines real-time data, geo-targeting, and stunning visuals for unparalleled brand exposure.</p>
+
+        <ul class="features-list">
+            <li>Guaranteed reach through precise geofencing</li>
+            <li>Dynamic content updates to keep your ads relevant</li>
+            <li>Eye-catching designs for high visibility</li>
+            <li>Easy setup with expert support</li>
+            <li>Comprehensive analytics for measurable results</li>
+        </ul>
+
+        <a href="#notify" class="cta-button">Be the First to Know!</a>
+
         <div class="countdown-container">
-            
-            <h1>Ads & Beyond</h1>
-            <div class="slogan">The Future of Advertising is Arriving in</div>
-
-            <!-- Countdown Timer -->
-            <div class="countdown">
-                <div class="time-block">
-                    <div id="days" class="time">00</div>
-                    <div class="label">Days</div>
-                </div>
-                <div class="time-block">
-                    <div id="hours" class="time">00</div>
-                    <div class="label">Hours</div>
-                </div>
-                <div class="time-block">
-                    <div id="minutes" class="time">00</div>
-                    <div class="label">Minutes</div>
-                </div>
-                <div class="time-block">
-                    <div id="seconds" class="time">00</div>
-                    <div class="label">Seconds</div>
-                </div>
+            <div class="time-block">
+                <div id="days" class="time">00</div>
+                <div class="label">Days</div>
             </div>
-
+            <div class="time-block">
+                <div id="hours" class="time">00</div>
+                <div class="label">Hours</div>
+            </div>
+            <div class="time-block">
+                <div id="minutes" class="time">00</div>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="time-block">
+                <div id="seconds" class="time">00</div>
+                <div class="label">Seconds</div>
+            </div>
         </div>
-        <div class="background"></div>
 
+        <div class="subscribe-box" id="notify">
+            <h3>Sign Up for Updates</h3>
+            <form action="#" id="subscribe-form">
+                <input type="email" placeholder="Your email address" required>
+                <input type="submit" value="Subscribe">
+            </form>
+        </div>
     </div>
 
+    <!-- Container for moving cars -->
+    <div class="moving-cars" id="movingCars"></div>
+
     <script>
-        const countDownDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime();
+        // Set the countdown date to September 17th at 1:00 PM Saudi time
+        const countDownDate = new Date("2024-09-17T13:00:00+03:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -382,21 +368,88 @@
 
             if (distance < 0) {
                 clearInterval(countdownTimer);
-                document.querySelector(".countdown").innerHTML = "<h2>BarqAds is Live!</h2>";
+                document.querySelector(".countdown-container").innerHTML = "<h2>BarqAds is Live!</h2>";
             }
         }
 
         const countdownTimer = setInterval(updateCountdown, 1000);
 
-        function flashLightning() {
-            const lightning = document.querySelector('.lightning');
-            lightning.style.animation = 'lightning 1s';
-            setTimeout(() => {
-                lightning.style.animation = 'none';
-            }, 1000);
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = `${Math.random() * 5 + 2}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                particle.style.animationDelay = `${Math.random() * 2}s`;
+                particlesContainer.appendChild(particle);
+            }
         }
 
-        setInterval(flashLightning, Math.random() * 5000 + 2000);
-    </script>
+        function createCars() {
+            const carsContainer = document.getElementById('movingCars');
+            const carImages = ['car1.avif', 'car2.avif', 'car3.avif'];
+
+            carImages.forEach((carImage, index) => {
+                const car = document.createElement('div');
+                car.classList.add('car');
+                const img = document.createElement('img');
+                img.src = `images/${carImage}`;
+                img.alt = `Moving Car ${index + 1}`;
+                car.appendChild(img);
+
+                const randomTop = Math.random() * 80 + 10; // Random vertical position between 10% and 90%
+                car.style.top = `${randomTop}%`;
+                
+                // Set a random start delay for each car
+                const randomDelay = Math.random() * 5;
+                car.style.animationDelay = `${randomDelay}s`;
+
+                carsContainer.appendChild(car);
+            });
+        }
+
+        // Initialize particles and cars
+        createParticles();
+        createCars();
+
+        // Create new cars every 15 seconds
+        setInterval(createCars, 15000);
+
+       // Handle form submission
+    document.getElementById('subscribe-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = this.querySelector('input[type="email"]');
+        const email = emailInput.value;
+        
+        // Here you would typically send the email to your server
+        // For this example, we'll just log it to the console and show an alert
+        console.log('Subscription email:', email);
+        
+        alert('Thank you for subscribing! We will keep you updated on our launch.');
+        this.reset(); // Clear the form
+    });
+
+    // Function to start all animations and timers
+    function initializePageElements() {
+        createParticles();
+        createCars();
+        updateCountdown();
+
+        // Start the countdown timer
+        setInterval(updateCountdown, 1000);
+
+        // Create new cars every 15 seconds
+        setInterval(createCars, 15000);
+    }
+
+    // Call the initialization function when the page loads
+    window.addEventListener('load', initializePageElements);
+</script>
 </body>
 </html>
