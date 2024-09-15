@@ -338,12 +338,20 @@
             100% { transform: translateX(calc(-100vw - 150px)); }
         }
 
+        
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
+            h1 { font-size: 1.5rem; }
             .description { font-size: 1.2rem; }
             .cta-button {
                 font-size: 1.2rem;
                 padding: 12px 28px;
+            }
+            .guaranteed-impressions {
+                top: 20px;
+                right: 20px;
+                width: 100px;
+                height: 100px;
+                font-size: 0.8rem;
             }
         }
 
@@ -389,22 +397,16 @@
         <p class="description">A Revolutionary Way to Deliver Outdoor Ads.<br> 
             BarqAds is launching a new product that combines real-time data, geo-targeting, re-targeting and stunning visuals for unparalleled brand exposure.</p>
 
-
-            <div class="shocking-fact">
-                😲 Did you know? The average person is exposed to over 4,000 ads per day! 📣
-                BarqAds cuts through the noise with dynamic, data-driven outdoor advertising that grabs the attention. 🎯 
-            </div>
-
             <ul class="features-list">
                 <li>Guaranteed reach through precise geofencing</li>
-                <li>Dynamic content updates to keep your ads relevant</li>
+                <li>Know your impressions from offline ads like never before </li>
                 <li>Eye-catching designs for high visibility</li>
                 <li>Easy setup with expert support</li>
                 <li>Comprehensive analytics for measurable results</li>
             </ul>
     
             <div class="cities-container">
-                <h2>We’re launching soon in:</h2>
+                <h>We’re launching soon in:</h>
                 <ul class="cities-list">
                     <li>Riyadh</li>
                     <li>Jeddah</li>
@@ -446,7 +448,7 @@
     <div class="moving-cars" id="movingCars"></div>
 
     <script>
-        const countDownDate = new Date("2024-09-22T13:00:00+03:00").getTime();
+        const countDownDate = new Date("2024-09-19T23:59:00+03:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
