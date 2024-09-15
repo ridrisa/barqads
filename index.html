@@ -55,6 +55,14 @@
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
         .description {
             font-size: 1.5rem;
@@ -62,6 +70,7 @@
             margin-bottom: 2rem;
             max-width: 700px;
         }
+        
 
         .features-list {
             margin: 2rem 0;
@@ -212,7 +221,6 @@
             50% { transform: translateY(-20px); }
         }
         .cities-container {
-    margin-top: 3rem;
     text-align: center;
 }
 
@@ -306,7 +314,7 @@
     position: absolute;
     right: -150px; /* Start off-screen on the right */
     animation: moveBike 3s ease-in-out infinite, bobbing 1s ease-in-out infinite; /* Added bobbing effect */
-    filter: blur(1px) brightness(1.2); /* Adds motion blur and brightness for speed effect */
+    filter: blur(1px) brightness(1.1); /* Adds motion blur and brightness for speed effect */
 }
 
 @keyframes moveBike {
@@ -339,7 +347,7 @@
 
         
         @media (max-width: 768px) {
-            h1 { font-size: 1.5rem; }
+            h1,h2 { font-size: 1.5rem; }
             .description { font-size: 1.2rem; }
             .cta-button {
                 font-size: 1.2rem;
@@ -358,7 +366,7 @@
 
 
 @media (max-width: 480px) {
-    h1 { font-size: 1.8rem; }
+    h1,h2 { font-size: 1.8rem; }
     .description { font-size: 1rem; }
     .cta-button {
         font-size: 1rem;
@@ -366,7 +374,7 @@
     }
     .subscribe-box input[type="email"] { 
         width: 220px; 
-        margin-bottom: 50px; /* Added space below email input */
+        margin-bottom: 10px; /* Added space below email input */
     }
     .subscribe-box input[type="submit"] {
         display: block; /* Ensure submit button is on a new line */
@@ -396,7 +404,7 @@
             </ul>
     
             <div class="cities-container">
-                <h>We’re launching soon in:</h>
+                <h2>We’re launching soon in:</h2>
                 <ul class="cities-list">
                     <li>Riyadh</li>
                     <li>Jeddah</li>
