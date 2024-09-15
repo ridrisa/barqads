@@ -355,36 +355,27 @@
             }
         }
 
-        .shocking-fact {
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0; /* Removed margin */
-    max-width: 400px; /* Adjusted width */
-    position: absolute;
-    top: 50%; /* Vertically centered */
-    left: 150px; /* Positioned to the side */
-    transform: rotate(-15deg) translateY(-50%); /* Diagonal rotation and vertical center */
-    transform-origin: center;
-    box-shadow: 0 0 20px var(--accent-color);
-    z-index: 1; /* Ensures it stays above other content */
-    display: inline-block;
+
+
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.8rem; }
+    .description { font-size: 1rem; }
+    .cta-button {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+    .subscribe-box input[type="email"] { 
+        width: 220px; 
+        margin-bottom: 50px; /* Added space below email input */
+    }
+    .subscribe-box input[type="submit"] {
+        display: block; /* Ensure submit button is on a new line */
+        width: 100%; /* Full width on mobile */
+        padding: 10px 25px;
+    }
 }
 
-
-
-        @media (max-width: 480px) {
-            h1 { font-size: 1.8rem; }
-            .description { font-size: 1rem; }
-            .cta-button {
-                font-size: 1rem;
-                padding: 10px 25px;
-            }
-            .subscribe-box input[type="email"] { width: 220px; }
-        }
     </style>
 </head>
 <body>
@@ -492,35 +483,40 @@
       
 
         function createCars() {
-            const carsContainer = document.getElementById('movingCars');
-            const carImages = ['car1.avif','car2.avif', 'bike.avif'];
+    const carsContainer = document.getElementById('movingCars');
+    
+    // Clear the container to avoid car duplication
+    carsContainer.innerHTML = '';
 
-            carImages.forEach((carImage, index) => {
-                const car = document.createElement('div');
-                car.classList.add('car');
-                if (carImage.includes('bike')) {
-                    car.classList.add('bike');
-                }
-                const img = document.createElement('img');
-                img.src = `images/${carImage}`;
-                img.alt = `Moving ${carImage.includes('bike') ? 'Bike' : 'Car'} ${index + 1}`;
-                car.appendChild(img);
+    const carImages = ['car1.avif','car2.avif', 'bike.avif'];
 
-                const randomTop = Math.random() * 80 + 10; // Random vertical position between 10% and 90%
-                car.style.top = `${randomTop}%`;
-                
-                // Set a random start delay for each car/bike
-                const randomDelay = Math.random() * 3;
-                car.style.animationDelay = `${randomDelay}s`;
-
-                // Set a faster animation duration for the bike
-                if (carImage.includes('bike')) {
-                    car.style.animationDuration = '2s'; // Faster animation for the bike
-                }
-
-                carsContainer.appendChild(car);
-            });
+    carImages.forEach((carImage, index) => {
+        const car = document.createElement('div');
+        car.classList.add('car');
+        if (carImage.includes('bike')) {
+            car.classList.add('bike');
         }
+        const img = document.createElement('img');
+        img.src = `images/${carImage}`;
+        img.alt = `Moving ${carImage.includes('bike') ? 'Bike' : 'Car'} ${index + 1}`;
+        car.appendChild(img);
+
+        const randomTop = Math.random() * 80 + 10; // Random vertical position between 10% and 90%
+        car.style.top = `${randomTop}%`;
+        
+        // Set a random start delay for each car/bike
+        const randomDelay = Math.random() * 3;
+        car.style.animationDelay = `${randomDelay}s`;
+
+        // Set a faster animation duration for the bike
+        if (carImage.includes('bike')) {
+            car.style.animationDuration = '2s'; // Faster animation for the bike
+        }
+
+        carsContainer.appendChild(car);
+    });
+}
+
 
         function animateStamp() {
             const stamp = document.querySelector('.guaranteed-impressions');
