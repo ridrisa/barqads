@@ -18,13 +18,12 @@
         :root {
             --primary-color: #FFB81C;
             --secondary-color: #54565A;
-            --accent-color: #19654f;
-            --bg-color: #ffffff;
+            --accent-color: #198754;
+            --bg-color: #FFFFFF;
             --text-color: #333333;
         }
         .moving-cars {
             position: absolute;
-            color: #19654f;
             top: 70%;
             width: 100%;
             height: 200px;
@@ -77,11 +76,11 @@
             font-weight: 700;
         }
         .navbar {
-            background-color: var(--accent-color) ;
+            background-color: #ffffff;
             transition: background-color 0.3s ease;
         }
         .navbar-scrolled {
-            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         @keyframes typing {
@@ -90,14 +89,14 @@
         }
         @keyframes blink-caret {
             from, to { border-color: transparent }
-            50% { border-color: #e0c125; }
+            50% { border-color: #198754; }
         }
         @keyframes lightning {
             0%, 100% { 
-                text-shadow: 0 0 10px #ffffff, 0 0 20px #e0c125, 0 0 30px #19654f; 
+                text-shadow: 0 0 10px #ffffff, 0 0 20px #e0c125, 0 0 30px #198754; 
             }
             50% { 
-                text-shadow: 0 0 30px #19654f, 0 0 50px #e0c125, 0 0 60px #ffffff; 
+                text-shadow: 0 0 30px #198754, 0 0 50px #e0c125, 0 0 60px #ffffff; 
             }
         }
 
@@ -105,6 +104,10 @@
     .hero {
         padding: 50px 15px;
     }
+
+    
+    
+
     .container {
         padding: 0 10px;
     }
@@ -121,7 +124,7 @@
 }
 
 #stats i {
-    color: var(--bg-color);     /* Color of icons */
+    color: var(--accent-color);     /* Color of icons */
     margin-bottom: 10px;
 }
 
@@ -146,9 +149,10 @@
     transform: translateY(0);
 }
 
-.hero {
-            height: 80vh;
-            background: url('images/covers/cover.png') no-repeat center/cover;
+
+        .hero {
+            height: 85vh;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('images/covers/cover.png') no-repeat center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -159,7 +163,8 @@
         .hero h1 {
             font-size: 4rem;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-            overflow: show;
+            overflow: hidden;
+            white-space: nowrap;
             border-right: 5px solid rgba(255, 255, 255, 0.75);
             animation: typing 4s steps(30, end), blink-caret .75s step-end infinite, lightning 1.5s infinite ease-in-out;
         }
@@ -193,7 +198,7 @@
             transform: translateY(0);
         }
         .btn-primary:hover {
-            background-color: #19654f;
+            background-color: #198754;
             color: black
         }
         .section-title {
@@ -209,13 +214,13 @@
             background-color: var(--bg-color);
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease in-out;
+            transition: transform 0.3s ease;
         }
         .price-box:hover {
             transform: translateY(-10px);
         }
         footer {
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color);
             color: white;
             padding: 1.5rem 0;
             text-align: center;
@@ -227,7 +232,7 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: var(--bg-color);
-            background-color: #19654f;
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 2rem;
             border-radius: 10px;
         }
@@ -257,6 +262,7 @@
     </style>
 </head>
 <body>
+
     <nav id="navbar-main" class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#top">
@@ -304,8 +310,6 @@
             </div>
         </div>
     </section>
-
-   
 
     <section id="feature" class="py-5 bg-light">
         <div class="container ">
@@ -369,7 +373,7 @@
             </div>
         </div>
     </section>
-    <section id="stats" class="py-5" style="background-color: var(--accent-color); color: var(--bg-color);">
+    <section id="stats" class="py-5" style="background-color: var(--primary-color); color: var(--bg-color);">
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-6 mb-3">
@@ -442,7 +446,7 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img src="images/covers/cover10.png" alt="Integrated Media Buying Platform" class="img-fluid rounded">
+                    <img src="images/logotransparentxs.png" alt="Integrated Media Buying Platform" class="img-fluid rounded">
                 </div>
                 <div class="col-md-6">
                     <h3>One Platform, Multiple Channels</h3>
@@ -482,7 +486,7 @@
             transform: translateX(-50%);
             width: 40px;
             height: 40px;
-            background-color: #19654f;
+            background-color: #FFB81C;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -550,7 +554,7 @@
             background-color: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px #00000095;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
 
         }
@@ -626,7 +630,7 @@
                     </div>
                     <div class="option">
                         <label for="logo-size">Logo Size</label>
-                        <input type="range" id="logo-size" min="10" max="300" value="100">
+                        <input type="range" id="logo-size" min="50" max="300" value="100">
                     </div>
                 </div>
             </div>
@@ -701,7 +705,8 @@
                     <div class="price-box p-4">
                         <div class="price-heading text-center">
                             <h3>Basic Package</h3>
-                        </div>    
+                        </div>
+                       
                         <ul class="list-unstyled">
                             <li><i class="fas fa-check text-success me-2"></i>30 - 99 Vehicles</li>
                             <li><i class="fas fa-check text-success me-2"></i>3 Months Minimum Duration</li>
