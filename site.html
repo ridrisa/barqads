@@ -153,16 +153,21 @@
 }
 
 
-        .hero {
-            height: 85vh;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('images/covers/cover.png') no-repeat center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
+.hero {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+}
+
+        
         .hero h1 {
             font-size: 4rem;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
@@ -1011,8 +1016,39 @@ function updateLogoSize() {
         document.getElementById('mapOverlay').style.display = 'none';
     });
 
+    const heroSection = document.querySelector('.hero');
+    const images = [
+        'images/covers/cover1.png',
+        'images/covers/cover2.png',
+        'images/covers/cover3.png',
+        'images/covers/cover4.png',
+        'images/covers/cover5.png',
+        'images/covers/cover6.png',
+        'images/covers/cover7.png',
+        'images/covers/cover8.png',
+        'images/covers/cover9.png',
+        'images/covers/cover10.png',
+        'images/covers/cover11.png',
+        'images/covers/cover12.png',
+        'images/covers/cover13.png',
+        'images/covers/cover14.png'
+    ];
 
-    </script>
+    let currentImageIndex = 0;
+
+    function changeBackgroundImage() {
+        heroSection.style.backgroundImage = `url(${images[currentImageIndex]})`;
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    }
+
+    // Initial image
+    heroSection.style.backgroundImage = `url(${images[currentImageIndex]})`;
+
+    // Change background image every 5 seconds
+    setInterval(changeBackgroundImage, 3000);
+</script>
+
+
 </body>
 
 </html>
