@@ -12,22 +12,64 @@
             padding: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
             font-family: 'Roboto', sans-serif;
         }
         #map {
             width: 100%;
-            height: 100%;
+            height: 90%;
         }
-        .mapboxgl-popup {
-            max-width: 300px;
-            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        .legend {
+            background-color: white;
+            padding: 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .legend h4 {
+            margin: 0 0 5px;
+        }
+        .legend div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .legend span {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        .color-scale {
+            background: linear-gradient(to right, #440154, #414487, #2a788e, #22a884, #7ad151, #fde725);
+            width: 150px;
+            height: 20px;
+        }
+        .label {
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
         }
     </style>
 </head>
 <body>
     <div id="map"></div>
+    
+    <!-- Legend -->
+    <div class="legend">
+        <h4>Impression Intensity</h4>
+        <div class="color-scale"></div>
+        <div class="label">
+            <span>Low</span>
+            <span>High</span>
+        </div>
+    </div>
+
     <script>
         // Your Mapbox access token
         mapboxgl.accessToken = 'pk.eyJ1IjoicmlkcmlzYSIsImEiOiJjbTAwdmNhbGIxbTVuMmxzaXI1bnI5c3p1In0.U7SBrThz-zPdDaWz7Ah5XQ';
