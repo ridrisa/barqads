@@ -96,6 +96,7 @@
             font-size: 1rem;
             margin: 0;
             color: var(--slogan-color);
+            margin-left: -20px ;
             font-weight: 600;
         }
 
@@ -1087,20 +1088,20 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" method="POST" action=https://script.google.com/macros/s/AKfycbwWyLt1GCtD4GqHoKjhO-OOBkxhzVfdZr1M0Y-UAt9OGaqkfMWeWZDy7cociwdWJfXd/exec>
+                        <input type="hidden" name="type" value="message">
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name" required aria-label="Your Name">
+                          <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email" required aria-label="Your Email">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required aria-label="Your Message"></textarea>
+                          <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Message</button>
-                        <p class="mt-3">Not a customer? <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" data-bs-dismiss="modal">Sign Up</a></p>
-                    </form>
-                </div>
+                      </form>
+                    </div>
                 <div class="col-md-6">
                     <div class="contact-info">
                         <h3>Our Office</h3>
@@ -1178,48 +1179,48 @@
             </div>
         </div>
     </div>
-
-    <!-- Sign Up Modal -->
-    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 id="signUpModalLabel">Sign Up</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="signUpForm">
-                        <div class="mb-3">
-                            <label for="signUpName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="signUpName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="signUpEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="signUpEmail" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="signUpPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="signUpPassword" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="signUpUsername" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="signUpUsername" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="signUpPhone" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="signUpPhone" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="signUpAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="signUpAddress" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-                    </form>
-                    <p class="mt-3 text-center">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#signInModal" data-bs-dismiss="modal">Sign In</a></p>
-                </div>
+<!-- Sign Up Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="signUpModalLabel">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="signUpForm" method="POST" action="https://script.google.com/macros/s/AKfycbwWyLt1GCtD4GqHoKjhO-OOBkxhzVfdZr1M0Y-UAt9OGaqkfMWeWZDy7cociwdWJfXd/exec">
+                    <input type="hidden" name="type" value="signup">
+                    <div class="mb-3">
+                        <label for="signUpName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="signUpName" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signUpEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="signUpEmail" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signUpPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signUpPassword" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signUpUsername" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="signUpUsername" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signUpPhone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="signUpPhone" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signUpAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="signUpAddress" name="address" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+                <p class="mt-3 text-center">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#signInModal" data-bs-dismiss="modal">Sign In</a></p>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Chat Widget Button -->
     <button class="chat-widget-button" id="chatWidgetButton" aria-label="Open Chat">
@@ -1428,6 +1429,7 @@
         }
 
         // Sign Up Form Submission
+
         const signUpForm = document.getElementById('signUpForm');
         if (signUpForm) {
             signUpForm.addEventListener('submit', function (e) {
