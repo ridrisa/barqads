@@ -1,6 +1,4 @@
-
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +9,8 @@
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="BARQ ADS offers innovative vehicle wrap and outdoor advertising solutions, revolutionizing how businesses reach their audience.">
-    <meta name="keywords" content="Outdoor advertising, vehicle wraps, digital display ads, real-time analytics, BARQ ADS">
+    <meta name="keywords"
+        content="Outdoor advertising, vehicle wraps, digital display ads, real-time analytics, BARQ ADS">
     <meta name="author" content="BARQ ADS">
     <meta name="developer" content="Ramiz the digalyzer">
     <!-- Title -->
@@ -29,7 +28,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Mulish:400,600,700|Poppins:300,400,600,700&display=swap"
         rel="stylesheet">
     <!-- Preload Images -->
-   
+
     <link rel="preload" href="images/covers/cover1.png" as="image">
     <link rel="preload" href="images/covers/cover2.png" as="image">
     <link rel="preload" href="images/covers/cover3.png" as="image">
@@ -47,504 +46,601 @@
     <link rel="preload" href="images/covers/cover15.png" as="image">
     <!-- Styles -->
     <style>
-        /* Root Variables */
-        :root {
-            --primary-color: #FFB81C;
-            --secondary-color: #54565A;
-            --accent-color: #198754;
-            --bg-color: #FFFFFF;
-            --text-color: #333333;
-            --slogan-color: #198754;
-            --navbar-bg: transparent;
-            --nav-link-color: #fff;
-        }
+/* Root Variables for Easy Customization */
+:root {
+    --primary-color: #FFB81C;        /* Yellow */
+    --secondary-color: #54565A;      /* Dark Gray */
+    --accent-color: #198754;         /* Green */
+    --bg-color: #FFFFFF;             /* White */
+    --text-color: #333333;           /* Dark Text */
+    --slogan-color: #198754;         /* Green for Slogan */
+    --navbar-transparent: rgba(255, 255, 255, 0.0); /* Fully Transparent */
+    --navbar-scrolled-bg: #FFFFFF;    /* White Background on Scroll */
+    --navbar-transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    --nav-link-color: #FFFFFF;        /* White Links on Transparent Navbar */
+    --nav-link-scrolled-color: #333333; /* Dark Links on White Navbar */
+    --slogan-font-size: 0.9rem;       /* Font size for Slogan */
+    --logo-height: 50px;              /* Logo Height */
+}
 
-        /* Global Styles */
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            overflow-x: hidden;
-        }
+/* Global Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
 
-        /* Navbar Styles */
-        .navbar {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background-color: var(--navbar-bg);
-            transition: background-color 0.3s ease-in-out;
-            padding: 1% 0;
-        }
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+}
 
-        
+/* Navbar Styles */
+.navbar {
+    background-color: var(--navbar-transparent);
+    transition: var(--navbar-transition);
+    padding: 1rem 0;
+}
 
-        .navbar-brand {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+.navbar-scrolled {
+    background-color: var(--navbar-scrolled-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .navbar-brand img {
-            height: 50px;
-            transition: transform 0.3s ease;
-        }
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
 
-        .navbar-toggler {
-            border: none;
-            outline: none;
-        }
-        .navbar-brand .slogan{
-color: #198754;
+.brand-logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        }
+.navbar-brand img {
+    height: var(--logo-height);
+    transition: filter 0.3s ease;
+    /* Initial Logo Color: White (for transparent navbar) */
+    filter: brightness(0) invert(1);
+}
 
-        .navbar.scrolled .slogan{
-color: var(--primary-color);
+.navbar-scrolled .navbar-brand img {
+    /* Logo Color: Original (for white navbar) */
+    filter: none;
+}
 
-        }
+.navbar-brand .slogan {
+    margin: 0;
+    color: var(--slogan-color);
+    font-weight: bold;
+    font-size: var(--slogan-font-size);
+    transition: color 0.3s ease;
+}
 
+.navbar-scrolled .navbar-brand .slogan {
+    /* Slogan color remains green; adjust if needed */
+    color: var(--slogan-color);
+}
 
-        .navbar-toggler span {
-            width: 30px;
-            height: 2px;
-            background-color: #fff;
-            display: block;
-            margin: 6px auto;
-            transition: all 0.3s ease-in-out;
-        }
+.navbar-toggler {
+    border: none;
+}
 
-        .navbar-toggler.open span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 8px;
-        }
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+    /* Change the toggler icon color for better visibility */
+}
 
-        .navbar-toggler.open span:nth-child(2) {
-            opacity: 0;
-        }
+/* Nav Links Styles */
+.navbar .nav-link {
+    color: var(--nav-link-color) !important;
+    transition: color 0.3s ease;
+    margin-left: 1rem;
+    font-weight: 500;
+}
 
-        .navbar-toggler.open span:nth-child(3) {
-            transform: rotate(-45deg);
-            top: -8px;
-        }
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: var(--accent-color) !important;
+}
 
-        .nav-link {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--nav-link-color);
-            position: relative;
-            transition: color 0.3s ease;
-        }
+.navbar-scrolled .nav-link {
+    color: var(--nav-link-scrolled-color) !important;
+}
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease-in-out;
-        }
+.navbar-scrolled .nav-link:hover,
+.navbar-scrolled .nav-link:focus {
+    color: var(--accent-color) !important;
+}
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+/* Hero Section Styles */
+.hero {
+    position: relative;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: backgroundSlide 42s infinite;
+}
 
-        /* Collapsible Navbar for Mobile */
-        .navbar-collapse {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
+@keyframes backgroundSlide {
+    0%, 100% { background-image: url('images/covers/cover1.png'); }
+    7.14% { background-image: url('images/covers/cover2.png'); }
+    14.28% { background-image: url('images/covers/cover3.png'); }
+    21.42% { background-image: url('images/covers/cover4.png'); }
+    28.56% { background-image: url('images/covers/cover5.png'); }
+    35.7% { background-image: url('images/covers/cover6.png'); }
+    42.84% { background-image: url('images/covers/cover7.png'); }
+    49.98% { background-image: url('images/covers/cover8.png'); }
+    57.12% { background-image: url('images/covers/cover9.png'); }
+    64.26% { background-image: url('images/covers/cover10.png'); }
+    71.4% { background-image: url('images/covers/cover11.png'); }
+    78.54% { background-image: url('images/covers/cover12.png'); }
+    85.68% { background-image: url('images/covers/cover13.png'); }
+    92.82% { background-image: url('images/covers/cover14.png'); }
+}
 
-        .navbar-collapse.show {
-            max-height: 300px;
-        }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 
-        /* Hero Section Styles */
-        .hero {
-            position: relative;
-            height: 100vh;
-            color: white;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            animation: backgroundSlide 42s infinite;
-        }
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
 
-      @keyframes backgroundSlide {
-    0%,
-    100% {
-        background-image: url('images/covers/cover1.png');
+.hero h1 {
+    font-size: 4rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #f0f0f0;
+}
+
+.btn-primary {
+    padding: 12px 30px;
+    font-size: 1.25rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+}
+
+/* Section Titles */
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Price Boxes */
+.price-box {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.price-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.highlight-icon {
+    color: var(--primary-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.highlight-icon:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Process Steps */
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.process-steps .step {
+    flex: 1 1 22%;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-steps .step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.process-steps .step::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.process-steps .step:first-child::before {
+    display: none;
+}
+
+.process-steps .step-number {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 50px;
+    border-radius: 50%;
+}
+
+.process-steps .step h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.process-steps .step p {
+    font-size: 1rem;
+    color: #666666;
+}
+
+/* Responsive Adjustments for Process Steps */
+@media (max-width: 768px) {
+    .process-steps {
+        flex-direction: column;
+        align-items: center;
     }
 
-    7.14% {
-        background-image: url('images/covers/cover2.png');
+    .process-steps .step {
+        flex: 1 1 100%;
+        margin: 1rem 0;
     }
 
-    14.28% {
-        background-image: url('images/covers/cover3.png');
-    }
-
-    21.42% {
-        background-image: url('images/covers/cover4.png');
-    }
-
-    28.56% {
-        background-image: url('images/covers/cover5.png');
-    }
-
-    35.7% {
-        background-image: url('images/covers/cover6.png');
-    }
-
-    42.84% {
-        background-image: url('images/covers/cover7.png');
-    }
-
-    49.98% {
-        background-image: url('images/covers/cover8.png');
-    }
-
-    57.12% {
-        background-image: url('images/covers/cover9.png');
-    }
-
-    64.26% {
-        background-image: url('images/covers/cover10.png');
-    }
-
-    71.4% {
-        background-image: url('images/covers/cover11.png');
-    }
-
-    78.54% {
-        background-image: url('images/covers/cover12.png');
-    }
-
-    85.68% {
-        background-image: url('images/covers/cover13.png');
-    }
-
-    92.82% {
-        background-image: url('images/covers/cover14.png');
+    .process-steps .step::before {
+        display: none;
     }
 }
 
+/* ROI Cards */
+.roi-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
+.roi-card {
+    flex: 1 1 30%;
+    background-color: var(--bg-color);
+    padding: 2rem;
+    margin: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .hero .container {
-            position: relative;
-            z-index: 2;
-        }
+.roi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
 
-        .hero h1 {
-            font-size: 4rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
+.roi-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            color: #f0f0f0;
-        }
+.roi-card .stat-number {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    font-weight: 700;
+}
 
-        .btn-primary {
-            padding: 12px 30px;
-            font-size: 1.25rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-            border: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
+.roi-card p {
+    font-size: 1rem;
+    color: #666666;
+}
 
-        /* Section Styles */
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+/* Responsive Adjustments for ROI Cards */
+@media (max-width: 768px) {
+    .roi-cards {
+        flex-direction: column;
+        align-items: center;
+    }
 
-        .section-title h2 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
+    .roi-card {
+        flex: 1 1 100%;
+        margin: 1rem 0;
+    }
+}
 
-        .price-box {
-            background-color: var(--bg-color);
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            text-align: center;
-            padding: 1.5rem;
-        }
+/* Vehicle Editor */
+.vehicle-editor {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
 
-        .price-box:hover {
-            transform: translateY(-10px);
-        }
+.vehicle-preview {
+    flex: 1 1 50%;
+    position: relative;
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-        .highlight-icon {
-            color: var(--primary-color);
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+.vehicle-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 
-        .highlight-icon:hover {
-            color: var(--accent-color);
-            transform: scale(1.1);
-        }
+#logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
 
-        /* How It Works Section */
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
+.vehicle-options {
+    flex: 1 1 50%;
+    padding: 1rem;
+}
 
-        .process-steps .step {
-            flex: 1 1 22%;
-            text-align: center;
-            padding: 1rem;
-            margin: 1rem;
-            border-radius: 10px;
-            background-color: var(--bg-color);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
+.vehicle-options .option {
+    margin-bottom: 1rem;
+}
 
-        .process-steps .step::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: -20px;
-            width: 10px;
-            height: 10px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            transform: translateY(-50%);
-        }
+.vehicle-options label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
 
-        .process-steps .step:first-child::before {
-            display: none;
-        }
+.vehicle-options input[type="text"],
+.vehicle-options select,
+.vehicle-options input[type="color"],
+.vehicle-options input[type="range"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
 
-        .process-steps .step-number {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 1rem;
-            background-color: var(--primary-color);
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: 700;
-            line-height: 50px;
-            border-radius: 50%;
-        }
+/* Responsive Adjustments for Vehicle Editor */
+@media (max-width: 768px) {
+    .vehicle-editor {
+        flex-direction: column;
+    }
 
-        .process-steps .step h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
+    .vehicle-preview,
+    .vehicle-options {
+        flex: 1 1 100%;
+    }
+}
 
-        .process-steps .step p {
-            font-size: 1rem;
-        }
+/* Footer Styles */
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
 
-        @media (max-width: 768px) {
-            .process-steps {
-                flex-direction: column;
-                align-items: center;
-            }
+footer a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-            .process-steps .step {
-                flex: 1 1 100%;
-                margin: 1rem 0;
-            }
+footer a:hover,
+footer a:focus {
+    color: var(--accent-color);
+}
 
-            .process-steps .step::before {
-                display: none;
-            }
-        }
+footer h5 {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+}
 
-        /* ROI Section */
-        .roi-cards {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
+footer ul {
+    list-style: none;
+    padding: 0;
+}
 
-        .roi-card {
-            flex: 1 1 30%;
-            background-color: var(--bg-color);
-            padding: 2rem;
-            margin: 1rem;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+footer ul li {
+    margin: 0.5rem 0;
+}
 
-        .roi-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
+.footer .social-links a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
 
-        .roi-card .stat-number {
-            font-size: 2.5rem;
-color: #FFB81C;            margin: 1rem 0;
-            font-weight: 700;
-        }
+.footer .social-links a:hover,
+.footer .social-links a:focus {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
 
-        @media (max-width: 768px) {
-            .roi-cards {
-                flex-direction: column;
-                align-items: center;
-            }
+/* Newsletter Input */
+.newsletter-input {
+    max-width: 400px;
+    margin: 0 auto;
+}
 
-            .roi-card {
-                flex: 1 1 100%;
-                margin: 1rem 0;
-            }
-        }
+.newsletter-input .input-group {
+    display: flex;
+}
 
-        /* Vehicle Editor */
-        .vehicle-editor {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
+.newsletter-input input[type="email"] {
+    flex: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
 
-        .vehicle-preview {
-            flex: 1 1 50%;
-            position: relative;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+.newsletter-input .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
-        .vehicle-preview img {
-            max-width: 100%;
-            height: auto;
-        }
+/* Scroll Animations for Statistics */
+.stats-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-in-out;
+}
 
-        #logo-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1rem;
-            color: #000000;
-        }
+.stats-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .vehicle-options {
-            flex: 1 1 50%;
-            padding: 1rem;
-        }
+/* Map Overlay Content Styling */
+.map-overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--bg-color);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    z-index: 2;
+    display: none; /* Initially hidden */
+    transition: opacity 0.3s ease;
+}
 
-        .vehicle-options .option {
-            margin-bottom: 1rem;
-        }
+.map-overlay-content.active {
+    display: block;
+}
 
-        .vehicle-options label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
+#closeOverlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
-        .vehicle-options input[type="text"],
-        .vehicle-options select,
-        .vehicle-options input[type="color"],
-        .vehicle-options input[type="range"] {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid var(--secondary-color);
-            border-radius: 5px;
-        }
+/* Social Links Hover Effect */
+.social-links a {
+    color: #FFB81C;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
 
-        @media (max-width: 768px) {
-            .vehicle-editor {
-                flex-direction: column;
-            }
+.social-links a:hover,
+.social-links a:focus {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
 
-            .vehicle-preview,
-            .vehicle-options {
-                flex: 1 1 100%;
-            }
-        }
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
 
-        /* Footer Styles */
-        footer {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
+    .hero p {
+        font-size: 1.2rem;
+    }
 
-        footer a {
-            color: #fff;
-            text-decoration: none;
-        }
+    .navbar-brand .slogan {
+        font-size: 0.8rem;
+    }
+}
 
-        footer h5 {
-            margin-top: 1rem;
-            font-size: 1.25rem;
-        }
+/* Accessibility Enhancements */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
 
-        footer ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        footer ul li {
-            margin: 0.5rem 0;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav id="navbar-main" class="navbar navbar-expand-lg fixed-top">
+    <!-- Navigation Bar -->
+    <nav id="navbar-main" class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#top">
-                <img src="images/logotransparentxs.png" alt="BARQ ADS logo">
-                <span class="slogan">ADS & BEYOND</span>
+                <div class="brand-logo-text">
+                    <img src="images/logotransparentxs.png" alt="BARQ ADS logo">
+                    <p class="slogan">ADS & BEYOND</p>
+                </div>
             </a>
-            <button class="navbar-toggler" type="button">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#intro">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#feature">Features</a></li>
                     <li class="nav-item"><a class="nav-link" href="#stats">Statistics</a></li>
@@ -563,25 +659,9 @@ color: #FFB81C;            margin: 1rem 0;
             <h1 data-aos="fade-up">The Future of Outdoor Advertising is Here</h1>
             <p data-aos="fade-up" data-aos-delay="200">Reach your audience with AI-driven vehicle wrap solutions and
                 real-time analytics</p>
-            <a href="#contact" class="btn btn-primary btn-lg mt-4" data-aos="fade-up" data-aos-delay="400">Start Your
+            <a href="#contact" class="btn btn-primary btn-lg mt-4" data-aos="fade-up"
+                data-aos-delay="400">Start Your
                 Campaign</a>
-        </div>
-    </section>
-
-    <!-- Intro Section -->
-    <section id="intro" class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6" data-aos="fade-right">
-                    <img src="images/covers/cover15.png" alt="BARQ ADS in action" class="img-fluid rounded">
-                </div>
-                <div class="col-md-6" data-aos="fade-left">
-                    <h2>Revolutionizing Outdoor Advertising</h2>
-                    <p>Maximize your brand's reach with our innovative vehicle wrap advertising solutions, powered by
-                        real-time data and cutting-edge technology.</p>
-                    <a href="#feature" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1023,180 +1103,194 @@ color: #FFB81C;            margin: 1rem 0;
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js" defer></script>
+    <!-- AOS JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+    <!-- Custom Scripts -->
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+            });
 
-    <!-- Scripts -->
-    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
-     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-     <!-- AOS JavaScript -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-     <!-- Custom Scripts -->
-     <script>
-         // Initialize AOS
-         AOS.init({
-             duration: 800,
-             easing: 'ease-in-out',
-             once: true,
-             mirror: false
-         });
- 
-         // Navbar background change on scroll
-         $(window).on('scroll', function() {
-             const navbar = $('#navbar-main');
-             if ($(this).scrollTop() > 100) {
-                 navbar.addClass('scrolled');
-             } else {
-                 navbar.removeClass('scrolled');
-             }
-         });
- 
-         // Navbar Responsiveness Fix for mobile
-         $('.navbar-toggler').on('click', function() {
-             $(this).toggleClass('open');
-             $('#navbarNav').toggleClass('show');
-         });
- 
-         // Contact Form Submission
-         $('#contactForm').on('submit', function(e) {
-             e.preventDefault();
-             const name = $('#name').val();
-             const email = $('#email').val();
-             const message = $('#message').val();
-             alert('Thank you for your message. We will get back to you soon!');
-             this.reset();
-         });
- 
-         // Sign Up Form Submission
-         $('#signUpForm').on('submit', function(e) {
-             e.preventDefault();
-             alert('Thank you for signing up!');
-             $('#signUpModal').modal('hide');
-             this.reset();
-         });
- 
-         // Sign In Form Submission
-         $('#signInForm').on('submit', function(e) {
-             e.preventDefault();
-             alert('Welcome back!');
-             $('#signInModal').modal('hide');
-             this.reset();
-         });
- 
-         // Newsletter Form Submission
-         $('#newsletterForm').on('submit', function(e) {
-             e.preventDefault();
-             const email = $(this).find('input[type="email"]').val();
-             alert('Thank you for subscribing to our newsletter!');
-             this.reset();
-         });
- 
-         // Animated Counters
-         function animateCounter(id, start, end, duration) {
-             let range = end - start;
-             let current = start;
-             let increment = end > start ? 1 : -1;
-             let stepTime = Math.abs(Math.floor(duration / range));
-             let counterElement = document.getElementById(id);
- 
-             let timer = setInterval(() => {
-                 current += increment;
-                 counterElement.textContent = current.toLocaleString();
-                 if (current == end) {
-                     clearInterval(timer);
-                 }
-             }, stepTime);
-         }
- 
-         // Intersection Observer for Stats
-         const observer = new IntersectionObserver((entries) => {
-             entries.forEach((entry) => {
-                 if (entry.isIntersecting) {
-                     animateCounter("vehicleCount", 0, 5000, 2000);
-                     animateCounter("impressionCount", 0, 1000000, 2000);
-                     observer.unobserve(entry.target);
-                 }
-             });
-         }, { threshold: 0.5 });
- 
-         observer.observe(document.getElementById('stats'));
- 
-         // Vehicle Editor Functionality
-         const logoTypeSelect = document.getElementById('logo-type');
-         const logoTextInput = document.getElementById('logo-text-input');
-         const logoImageInput = document.getElementById('logo-image-input');
-         const logoContainer = document.getElementById('logo-container');
-         const logoText = document.getElementById('logo-text');
-         const logoFont = document.getElementById('logo-font');
-         const logoColor = document.getElementById('logo-color');
-         const logoImage = document.getElementById('logo-image');
-         const logoXPosition = document.getElementById('logo-x-position');
-         const logoYPosition = document.getElementById('logo-y-position');
-         const logoSize = document.getElementById('logo-size');
- 
-         logoTypeSelect.addEventListener('change', (e) => {
-             if (e.target.value === 'text') {
-                 logoTextInput.style.display = 'block';
-                 logoImageInput.style.display = 'none';
-                 updateLogoText();
-             } else {
-                 logoTextInput.style.display = 'none';
-                 logoImageInput.style.display = 'block';
-             }
-         });
- 
-         logoText.addEventListener('input', updateLogoText);
-         logoFont.addEventListener('change', updateLogoText);
-         logoColor.addEventListener('input', updateLogoText);
- 
-         function updateLogoText() {
-             logoContainer.textContent = logoText.value;
-             logoContainer.style.fontFamily = logoFont.value;
-             logoContainer.style.color = logoColor.value;
-             logoContainer.style.fontSize = `${logoSize.value}px`;
-         }
- 
-         logoImage.addEventListener('change', (e) => {
-             const file = e.target.files[0];
-             if (file) {
-                 const reader = new FileReader();
-                 reader.onload = function(e) {
-                     logoContainer.innerHTML = `<img src="${e.target.result}" alt="Logo" style="max-width: 100%; max-height: 100%;">`;
-                     updateLogoSize();
-                 }
-                 reader.readAsDataURL(file);
-             }
-         });
- 
-         logoXPosition.addEventListener('input', updateLogoPosition);
-         logoYPosition.addEventListener('input', updateLogoPosition);
-         logoSize.addEventListener('input', updateLogoSize);
- 
-         function updateLogoPosition() {
-             logoContainer.style.left = `${logoXPosition.value}%`;
-             logoContainer.style.top = `${logoYPosition.value}%`;
-             logoContainer.style.transform = 'translate(-50%, -50%)';
-             logoContainer.style.position = 'absolute';
-         }
- 
-         function updateLogoSize() {
-             const size = `${logoSize.value}px`;
-             if (logoTypeSelect.value === 'text') {
-                 logoContainer.style.fontSize = size;
-             } else {
-                 const logoImg = logoContainer.querySelector('img');
-                 if (logoImg) {
-                     logoImg.style.width = size;
-                     logoImg.style.height = 'auto';
-                 }
-             }
-         }
- 
-         // Close Map Overlay
-         document.getElementById('closeOverlay').addEventListener('click', function() {
-             document.getElementById('mapOverlay').style.display = 'none';
-         });
-     </script>
- 
+            // Navbar Scroll Effect
+            window.addEventListener('scroll', function () {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+
+            // Active Nav Link on Scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 80;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Contact Form Submission
+            $('#contactForm').on('submit', function (e) {
+                e.preventDefault();
+                const name = $('#name').val();
+                const email = $('#email').val();
+                const message = $('#message').val();
+                alert('Thank you for your message. We will get back to you soon!');
+                this.reset();
+            });
+
+            // Sign Up Form Submission
+            $('#signUpForm').on('submit', function (e) {
+                e.preventDefault();
+                alert('Thank you for signing up!');
+                $('#signUpModal').modal('hide');
+                this.reset();
+            });
+
+            // Sign In Form Submission
+            $('#signInForm').on('submit', function (e) {
+                e.preventDefault();
+                alert('Welcome back!');
+                $('#signInModal').modal('hide');
+                this.reset();
+            });
+
+            // Newsletter Form Submission
+            $('#newsletterForm').on('submit', function (e) {
+                e.preventDefault();
+                const email = $(this).find('input[type="email"]').val();
+                alert('Thank you for subscribing to our newsletter!');
+                this.reset();
+            });
+
+            // Animated Counters
+            function animateCounter(id, start, end, duration) {
+                let range = end - start;
+                let current = start;
+                let increment = end > start ? 1 : -1;
+                let stepTime = Math.abs(Math.floor(duration / range));
+                let counterElement = document.getElementById(id);
+
+                let timer = setInterval(() => {
+                    current += increment;
+                    counterElement.textContent = current.toLocaleString();
+                    if (current == end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            // Intersection Observer for Stats
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        animateCounter("vehicleCount", 0, 5000, 2000);
+                        animateCounter("impressionCount", 0, 1000000, 2000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(document.getElementById('stats'));
+
+            // Vehicle Editor Functionality
+            const logoTypeSelect = document.getElementById('logo-type');
+            const logoTextInput = document.getElementById('logo-text-input');
+            const logoImageInput = document.getElementById('logo-image-input');
+            const logoContainer = document.getElementById('logo-container');
+            const logoText = document.getElementById('logo-text');
+            const logoFont = document.getElementById('logo-font');
+            const logoColor = document.getElementById('logo-color');
+            const logoImage = document.getElementById('logo-image');
+            const logoXPosition = document.getElementById('logo-x-position');
+            const logoYPosition = document.getElementById('logo-y-position');
+            const logoSize = document.getElementById('logo-size');
+
+            logoTypeSelect.addEventListener('change', (e) => {
+                if (e.target.value === 'text') {
+                    logoTextInput.style.display = 'block';
+                    logoImageInput.style.display = 'none';
+                    updateLogoText();
+                } else {
+                    logoTextInput.style.display = 'none';
+                    logoImageInput.style.display = 'block';
+                }
+            });
+
+            logoText.addEventListener('input', updateLogoText);
+            logoFont.addEventListener('change', updateLogoText);
+            logoColor.addEventListener('input', updateLogoText);
+
+            function updateLogoText() {
+                logoContainer.textContent = logoText.value;
+                logoContainer.style.fontFamily = logoFont.value;
+                logoContainer.style.color = logoColor.value;
+                logoContainer.style.fontSize = `${logoSize.value}px`;
+            }
+
+            logoImage.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        logoContainer.innerHTML = `<img src="${e.target.result}" alt="Logo" style="max-width: 100%; max-height: 100%;">`;
+                        updateLogoSize();
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            logoXPosition.addEventListener('input', updateLogoPosition);
+            logoYPosition.addEventListener('input', updateLogoPosition);
+            logoSize.addEventListener('input', updateLogoSize);
+
+            function updateLogoPosition() {
+                logoContainer.style.left = `${logoXPosition.value}%`;
+                logoContainer.style.top = `${logoYPosition.value}%`;
+                logoContainer.style.transform = 'translate(-50%, -50%)';
+                logoContainer.style.position = 'absolute';
+            }
+
+            function updateLogoSize() {
+                const size = `${logoSize.value}px`;
+                if (logoTypeSelect.value === 'text') {
+                    logoContainer.style.fontSize = size;
+                } else {
+                    const logoImg = logoContainer.querySelector('img');
+                    if (logoImg) {
+                        logoImg.style.width = size;
+                        logoImg.style.height = 'auto';
+                    }
+                }
+            }
+
+            // Close Map Overlay
+            document.getElementById('closeOverlay').addEventListener('click', function () {
+                document.getElementById('mapOverlay').style.display = 'none';
+            });
+        });
+    </script>
+
 </body>
+
 </html>
